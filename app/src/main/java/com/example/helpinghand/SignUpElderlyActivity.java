@@ -11,4 +11,6 @@ public class SignUpElderlyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_elderly);
     }
+
+
 }
