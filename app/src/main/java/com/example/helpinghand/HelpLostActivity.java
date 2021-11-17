@@ -13,14 +13,13 @@ public class HelpLostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help_lost);
-    }
 
-    Button returnBack = findViewById(R.id.backButton);
-        returnBack.setOnClickListener(new View.OnClickListener(){
-        public void onClick(View v)
-        {
-            Intent navigateToPreviousPage = new Intent(HelpLostActivity.this, MainActivity.class);
-            startActivity(navigateToPreviousPage);
-        }
-    });
+        Button returnBack = findViewById(R.id.backButton);
+        returnBack.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent navigateToPreviousPage = new Intent(HelpLostActivity.this, MainActivity.class);
+                startActivity(navigateToPreviousPage);
+            }
+        });
+    }
 }
