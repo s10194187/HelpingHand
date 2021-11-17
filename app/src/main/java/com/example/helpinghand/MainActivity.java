@@ -26,6 +26,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button lostButton = findViewById(R.id.lostButton);
+        lostButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent navigateToLostPage = new Intent(MainActivity.this,HelpLostActivity.class);
+                startActivity(navigateToLostPage);
+            }
+
+        });
+
+
     }
 
 
