@@ -2,7 +2,9 @@ package com.example.helpinghand;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 public class LoginActivity extends AppCompatActivity {
@@ -12,7 +14,16 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Button buttonLeft = findViewById(R.id.buttonLeft);
+        Button loginToElderlyButton = findViewById(R.id.elderlyMainPageButton);
+        loginToElderlyButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v)
+            {
+                Intent navigateToElderlyPage = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(navigateToElderlyPage);
+            }
+        });
+
+
 
 
 
