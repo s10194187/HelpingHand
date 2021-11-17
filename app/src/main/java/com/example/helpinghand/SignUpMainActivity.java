@@ -1,15 +1,21 @@
 package com.example.helpinghand;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.auth.User;
@@ -73,37 +79,30 @@ public class SignUpMainActivity extends AppCompatActivity {
             }
 
             //register the user in the firebase
+            fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(SignUpMainActivity.this, "User Created", Toast.LENGTH_SHORT).show();
+                        /*
+                        userID = fAuth.getCurrentUser().getUid();
+                        DocumentReference documentReference = fStore.collection("Caregivers").document(userID);
+                        Map<String, Object> user = new HashMap<>();
+                        user.put("fName", fullname);
+                        user.put("email", email);
+                        user.put("phone", phone);
+                        */
 
-            fAuth.createUserWithEmailAndPassword(email, password).AddOnCompleteListener((task) ->{
-
-                if (task.isSuccessful()){
-                    Toast.makeText(SignUpMainActivity.this, "User Created", Toast.LENGTH_SHORT).show();
-                    userID = fAuth.getCurrentUser().getUid();
-                    DocumentReference documentReference = fStore.collection("Caregivers").document(userID);
-                    Map<String, Object> user = new HashMap<>();
-                    user.put("fName", fullname);
-                    user.put("email", email);
-                    user.put("phone", phone);
-
-                    Task<Void> voidTask = documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Log.d(TAG, msg:"onSuccess: user profile is created for " + userID);
-                        }
-                    });
-                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                    }
+                    else {
+                        Toast.makeText(SignUpMainActivity.this, "Error " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
                 }
-
-                else
-                {
-
-                }
-
-
             });
 
-        });
 
+        });
 
     }
 }
