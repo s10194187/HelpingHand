@@ -39,10 +39,13 @@ public class SignUpMainActivity extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
+        /*
         if (fAuth.getCurrentUser() != null){
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             finish();
         }
+        */
+
 
         mRegisterButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -81,8 +84,8 @@ public class SignUpMainActivity extends AppCompatActivity {
                             user.put("fName", fullname);
                             user.put("email", email);
                             user.put("phone", phone);
-
 */
+
                             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                         } else {
                             Toast.makeText(SignUpMainActivity.this, "Error " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
