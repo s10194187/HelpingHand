@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelpingHand">
         <activity
-            android:name=".WeeklyMedicationActivity"
+            android:name=".SignUpElderlyActivity"
             android:exported="false" />
         <activity
             android:name=".MedicationAlarmActivity"

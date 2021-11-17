@@ -14,26 +14,27 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Button signUpButton = findViewById(R.id.signUpButton);
-        signUpButton.setOnClickListener(new View.OnClickListener(){
+        Button caregiverSignUpPage = findViewById(R.id.signUpCaregiverButton);
+        caregiverSignUpPage.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v)
             {
-                Intent navigateToSignUpPage = new Intent(LoginActivity.this, SignUpMainActivity.class);
-                startActivity(navigateToSignUpPage);
+                Intent navigateToCaregiverSignUpPage = new Intent(LoginActivity.this, SignUpMainActivity.class);
+                startActivity(navigateToCaregiverSignUpPage);
             }
         });
 
-        Button loginToElderlyButton = findViewById(R.id.elderlyMainPageButton);
-        loginToElderlyButton.setOnClickListener(new View.OnClickListener(){
+        Button elderlySignUpPage = findViewById(R.id.signUpElderlyButton);
+        elderlySignUpPage.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v)
             {
-                Intent navigateToElderlyPage = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(navigateToElderlyPage);
+                Intent navigateToElderlySignUpPage = new Intent(LoginActivity.this, SignUpElderlyActivity.class);
+                startActivity(navigateToElderlySignUpPage);
             }
         });
 
-        Button loginToCaregiverButton = findViewById(R.id.CaregiverPageButton);
-        loginToCaregiverButton.setOnClickListener(new View.OnClickListener(){
+
+        Button navToCaregiverButton = findViewById(R.id.CaregiverPageButton);
+        navToCaregiverButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v)
             {
                 Intent navigateToCaregiverPage = new Intent(LoginActivity.this, CaregiverMainActivity.class);
@@ -41,6 +42,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        Button navToElderlyButton = findViewById(R.id.elderlyMainPageButton);
+        navToElderlyButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v)
+            {
+                Intent navigateToElderlyPage = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(navigateToElderlyPage);
+            }
+        });
 
 
 
