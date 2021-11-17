@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -31,72 +32,68 @@ public class SignUpMainActivity extends AppCompatActivity {
         mFullName = findViewById(R.id.caregiverName);
         mEmail = findViewById(R.id.caregiverEmail);
         mPassword = findViewById(R.id.caregiverPassword);
-        mPassword2 = findViewById(R.id.caregiverDuplicatePassword);
+        mPassword2 = findViewById(R.id.caregiverPassword2);
+        mPhone = findViewById(R.id.caregiverPhone);
         mRegisterButton = findViewById(R.id.caregiverRegisterButton);
+
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-
         if (fAuth.getCurrentUser() != null){
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             finish();
         }
 
-        mRegisterButton.setOnClickListener ((v) ->{
-            String email = mEmail.getText().toString().trim();
-            String password = mPassword.getText().toString().trim();
-            String fullname = mFullName.getText().toString();
+        mRegisterButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
 
-            if (TextUtils.isEmpty(email))
-            {
-                mEmail.setError("Email is required!");
-                return;
-            }
+                String email = mEmail.getText().toString().trim();
+                String password = mPassword.getText().toString().trim();
 
-
-            if (TextUtils.isEmpty(password))
-            {
-                mPassword.setError("Password is required!");
-                return;
-            }
-
-            if (TextUtils.isEmpty(fullname))
-            {
-                mFullName.setError("Name is required!");
-                return;
-            }
-
-            if (password.length() < 6)
-            {
-                mPassword.setError("Password must be >= 6 characters");
-                return;
-            }
-
-            //register the user in the firebase
-            fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
-                        Toast.makeText(SignUpMainActivity.this, "User Created", Toast.LENGTH_SHORT).show();
-                        /*
-                        userID = fAuth.getCurrentUser().getUid();
-                        DocumentReference documentReference = fStore.collection("Caregivers").document(userID);
-                        Map<String, Object> user = new HashMap<>();
-                        user.put("fName", fullname);
-                        user.put("email", email);
-                        user.put("phone", phone);
-                        */
-
-                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                    }
-                    else {
-                        Toast.makeText(SignUpMainActivity.this, "Error " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
+                if (TextUtils.isEmpty(email)) {
+                    mEmail.setError("Email is required!");
+                    return;
                 }
-            });
 
 
+                if (TextUtils.isEmpty(password)) {
+                    mPassword.setError("Password is required!");
+                    return;
+                }
+
+
+                if (password.length() < 6) {
+                    mPassword.setError("Password must be >= 6 characters");
+                    return;
+                }
+
+                //register the user in the firebase
+                fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(SignUpMainActivity.this, "User Created", Toast.LENGTH_SHORT).show();
+/*
+                            userID = fAuth.getCurrentUser().getUid();
+                            DocumentReference documentReference = fStore.collection("Caregivers").document(userID);
+                            Map<String, Object> user = new HashMap<>();
+                            user.put("fName", fullname);
+                            user.put("email", email);
+                            user.put("phone", phone);
+
+*/
+                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                        } else {
+                            Toast.makeText(SignUpMainActivity.this, "Error " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+            }
         });
+
+
 
     }
 }
