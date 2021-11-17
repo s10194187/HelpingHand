@@ -16,7 +16,6 @@ abstract class MainActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_main);
         Button sosButton = findViewById(R.id.sosButton);
         sosButton.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View view) {
                 switch (view.getId()){
                     case R.id.sosButton:
