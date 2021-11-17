@@ -10,18 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelpingHand">
         <activity
+            android:name=".CaregiverMainActivity"
+            android:exported="false" />
+        <activity
             android:name=".HelpLostActivity"
             android:exported="false" />
-        <activity android:name=".LoginActivity" >
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".MainActivity">
-        </activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
