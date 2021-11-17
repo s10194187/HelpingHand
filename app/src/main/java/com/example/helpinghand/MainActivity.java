@@ -35,6 +35,23 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+        Button medAlarmButton = findViewById(R.id.medAlarmButton);
+        medAlarmButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent navigateToMedAlarmPage = new Intent(MainActivity.this,MedicationAlarmActivity.class);
+                startActivity(navigateToMedAlarmPage);
+            }
+
+        });
+
+        //Button locationButton = findViewById(R.id.locationButton);
+        //.setOnClickListener(new View.OnClickListener(){
+        //    public void onClick(View v){
+        //        Intent navigateToLocationPage = new Intent(MainActivity.this,HelpLostActivity.class);
+        //        startActivity(navigateToLocationPage);
+        //    }
+
+        //});
 
     }
 
