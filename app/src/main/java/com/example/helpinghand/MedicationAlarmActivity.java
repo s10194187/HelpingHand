@@ -1,7 +1,10 @@
 package com.example.helpinghand;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -16,8 +19,24 @@ public class MedicationAlarmActivity extends AppCompatActivity {
 
         TextView currentDate = findViewById(R.id.medicationCurrentDate);
         TextView medicationList = findViewById(R.id.medicationList);
+        Button medicationBackButton = findViewById(R.id.medicationBackButton);
+        Button weeklyMedButton = findViewById(R.id.weeklyMedicationButton);
 
         setCurrentDay(currentDate);
+
+        medicationBackButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent navigateToPreviousPage = new Intent(MedicationAlarmActivity.this, MainActivity.class);
+                startActivity(navigateToPreviousPage);
+            }
+        });
+
+        weeklyMedButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent navigateTo = new Intent(MedicationAlarmActivity.this, WeeklyMedicationActivity.class);
+                startActivity(navigateTo);
+            }
+        });
     }
 
     private void setCurrentDay(TextView t){
