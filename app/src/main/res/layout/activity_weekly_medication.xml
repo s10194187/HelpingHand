@@ -19,6 +19,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:strokeColor="#000000"
         app:strokeWidth="2dp" />
-    
+
+    <com.github.tlaabs.timetableview.TimetableView
+        android:id="@+id/timetable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:column_count="7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weeklyMedicationBackButton"
+        app:row_count="12"
+        app:header_title="@array/my_header_title"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
