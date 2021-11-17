@@ -14,6 +14,15 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        Button signUpButton = findViewById(R.id.signUpButton);
+        signUpButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v)
+            {
+                Intent navigateToSignUpPage = new Intent(LoginActivity.this, SignUpMainActivity.class);
+                startActivity(navigateToSignUpPage);
+            }
+        });
+
         Button loginToElderlyButton = findViewById(R.id.elderlyMainPageButton);
         loginToElderlyButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v)
