@@ -14,7 +14,7 @@ public class HelpLostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help_lost);
 
-        Button returnBack = findViewById(R.id.backButton);
+        Button returnBack = findViewById(R.id.helpLostBackButton);
         returnBack.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent navigateToPreviousPage = new Intent(HelpLostActivity.this, MainActivity.class);
