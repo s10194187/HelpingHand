@@ -23,6 +23,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        Button loginToCaregiverButton = findViewById(R.id.CaregiverPageButton);
+        loginToCaregiverButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v)
+            {
+                Intent navigateToCaregiverPage = new Intent(LoginActivity.this, CaregiverMainActivity.class);
+                startActivity(navigateToCaregiverPage);
+            }
+        });
 
 
 
