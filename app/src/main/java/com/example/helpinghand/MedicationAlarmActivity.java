@@ -42,7 +42,7 @@ public class MedicationAlarmActivity extends AppCompatActivity {
     private void setCurrentDay(TextView t){
         long date = System.currentTimeMillis();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("DD Mon yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
         String dateString = sdf.format(date);
         t.setText(dateString);
     }
